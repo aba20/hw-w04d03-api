@@ -14,7 +14,7 @@ const name = document.createElement('h4');
 const gender = document.createElement('h4');
 const status = document.createElement('h4');
 const button = document.querySelector('button');
-const apiUrl = `https://rickandmortyapi.com/api/character/1,2,3,4,5`;
+const apiUrl = `https://rickandmortyapi.com/api/character/[1,2,3,4,5]`;
 
 const mortySmith = () => {
     axios({
@@ -24,10 +24,11 @@ const mortySmith = () => {
     )
         .then(res => {
             console.log(res)
-            img.src=res.data.image
-            name.innerText=res.data.name
-            gender.innerText=res.data.gender
-            status.innerText=res.data.status
+            
+            img.src=res.data[0,1,2,3,4].image
+            name.innerText=res.data[0,1,2,3,4].name
+            gender.innerText=res.data[0,1,2,3,4].gender
+            status.innerText=res.data[0,1,2,3,4].status
             document.body.append(img)
             document.body.append(name)
             document.body.append(gender)
